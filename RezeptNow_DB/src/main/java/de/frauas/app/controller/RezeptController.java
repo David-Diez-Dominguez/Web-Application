@@ -41,12 +41,18 @@ public class RezeptController {
 	public String updateRezept(@PathVariable(value = "id") int id, Model model) {
 		Rezept rezept = rezeptService.getRezeptById(id);
 		model.addAttribute("rezept", rezept);
-		return"rezept_update";
+		return "rezept_update";
 	}
+
 	@GetMapping("/deleteRezept/{id}")
 	public String deleteRezept(@PathVariable(value = "id") int id) {
 		this.rezeptService.deleteRezeptById(id);
 		return "redirect:/RezeptNow/dashboard";
 	}
-	
+
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+
 }
